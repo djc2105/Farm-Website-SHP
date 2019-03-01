@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1">
+    <title>Bed Select</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <img src='{% static "images/LotLabeled.png" %}' class='rounded float-right' height=600 alt="Farm map"/>
+    <h3>Select a Lot (use image for reference)</h3>
+    <a href="/data/rowselect/a" class="btn btn-primary btn-md">Lot A</a>
+    <a href="/data/rowselect/b" class="btn btn-primary btn-md">Lot B</a>
+    <a href="/data/rowselect/c" class="btn btn-primary btn-md">Lot C</a>
+    <a href="/data/rowselect/d" class="btn btn-primary btn-md">Lot D</a>
+
+</body>
+</html>

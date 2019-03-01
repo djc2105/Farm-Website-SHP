@@ -1,0 +1,51 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1">
+    <title>Bed Select</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+
+
+<body>
+    <img src='{% static 'images/LOTC.png' %}' class='rounded float-right' height=500 alt="Farm map"/>
+    <div class="row">
+        <div class="col">
+            <h3> You have selected lot {{id}}</h3>
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3>Now select a Row (use image for reference)</h3>
+        </div>
+        <div class="row"></div>
+    </div>
+    <form method="post" action="/data/getrow/c">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-lg" placeholder="Enter a row number" name="row">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
