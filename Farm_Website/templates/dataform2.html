@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Form</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% load crispy_forms_tags %}
+    {% block content %}
+      <form id="PlantForm", method="post", action="/data/submitdata/{{id}}/{{row}}/">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    {% endblock %}
+</body>
+</html>

@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^data/rowselect/(?P<id>[ab-d])', views.rowselect, name='rowselect'),
     url(r'^data/lotselect', views.lotselect, name='lotselect'),
     url(r'^science/home', views.sciencehome, name='sciencehome'),
-    url(r'^data/getrow/(?P<id>[ab-d])', views.getrow, name="getrow"),
+    url(r'^data/getrow/(?P<id>[ab-d])/', views.getrow, name="getrow"),
+    url(r'^data/submitdata/(?P<lot_id>[ab-d])/(?P<row_id>[0-9][0-9])/', views.submitdata, name="submitdata"),
 ]
