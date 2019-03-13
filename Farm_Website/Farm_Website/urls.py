@@ -20,9 +20,18 @@ from website import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^homepage', views.homepage, name='homepage'),
+    url(r'^data/homepage', views.dataactionselect, name='datahomepage'),
     url(r'^data/rowselect/(?P<id>[ab-d])', views.rowselect, name='rowselect'),
     url(r'^data/lotselect', views.lotselect, name='lotselect'),
     url(r'^science/home', views.sciencehome, name='sciencehome'),
     url(r'^data/getrow/(?P<id>[ab-d])/', views.getrow, name="getrow"),
     url(r'^data/submitdata/(?P<lot_id>[ab-d])/(?P<row_id>[0-9][0-9])/', views.submitdata, name="submitdata"),
+    url(r'^data/view/viewrow', views.viewrow, name='viewrow'),
+    url(r'^data/view/rowdata', views.rowdata, name='rowdata'),
+    url(r'^data/view/getplant/(?P<id>.{0,100})', views.getplant, name="getplant"),
+    url(r'^data/edit/(?P<id>.{0,100})', views.editplant, name="editplant"),
+    url(r'^data/updateplant/(?P<id>.{0,100})', views.updateplant, name="updateplant"),
+    url(r'^data/delete/(?P<id>.{0,100})', views.deleteplant, name="deleteplant"),
+    url(r'^data/view/viewall', views.viewall, name="viewall"),
+    url(r'^data/deleterowdata/(?P<lot_id>[ab-d])/(?P<row_id>[0-9][0-9])', views.deleterowdata, name="deleterowdata"),
 ]

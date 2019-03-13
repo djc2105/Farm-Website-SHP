@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load staticfiles %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device.width, initial-scale=1">
-    <title>Bed Select</title>
+    <title>Homepage</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -16,8 +18,18 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
+
+
+
+
 <body>
-    <h1>That was an invalid row</h1>
-    <a href="/data/homepage" class="btn btn-danger btn-md">Return</a>
+    <div class="container">
+        <h1 class="text-center">What would you like to do</h1>
+        <h4 class="text-center">Please select a option below</h4>
+        <a href="/data/lotselect" class="btn btn-primary btn-block">Input New Data</a>
+        <a href="/data/view/viewrow" class="btn btn-primary btn-block">View Current Data</a>
+    </div>
+
+
 </body>
 </html>

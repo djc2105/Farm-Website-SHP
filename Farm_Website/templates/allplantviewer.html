@@ -1,11 +1,10 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-{% load staticfiles %}
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device.width, initial-scale=1">
-    <title>Homepage</title>
+    <title>Bed Select</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
@@ -20,7 +19,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
       <a class="navbar-brand" href="/homepage/">SHP Farm</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -44,24 +42,39 @@
     <br>
 
     <div class="container">
-        <h1 class="text-center">Welcome to the SHP Farm Website</h1>
-        <h4 class="text-center">Please select a option below</h4>
-
-        <br>
-
-        <div class="row">
-            <div class="col"></div>
-            <div class="col"><a href="/data/homepage" class="btn btn-outline-secondary btn-block">Data Logging</a></div>
-            <div class="col"></div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col"><div class="row"><a href="/science/home" class="btn btn-outline-secondary btn-block">Science Beds</a></div></div>
-            <div class="col"></div>
-        </div>
+        <h1 class="text-center">You have selected to view all plants</h1>
     </div>
 
+    <div class="container">
+        <p class="text-center">Click on a plant name to edit its details</p>
+    </div>
+
+    <br>
+
+    <div class="container">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+              <th>Plant Name</th>
+              <th>Quantity</th>
+              <th>Date Planted</th>
+              <th>Lot</th>
+              <th>Row</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for plant in plants %}
+                <tr>
+                    <td><a href="getplant/{{ plant.id }}">{{ plant.plantname }}</a></td>
+                    <td>{{plant.quantity}}</td>
+                    <td>{{plant.dateplanted}}</td>
+                    <td>{{plant.row.inlot}}</td>
+                    <td>{{plant.row.rownum}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
 
 </body>
 </html>

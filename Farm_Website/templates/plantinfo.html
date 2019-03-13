@@ -1,0 +1,62 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1">
+    <title>Bed Select</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+
+
+<body>
+    <div class="row">
+        <div class="col">
+            <h3>This is all the data for this plant</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Plant Name: {{ plant.plantname }}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Quantity: {{ plant.quantity }}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Date Planted: {{ plant.dateplanted }}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Notes: {{ plant.notes }}</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a href="/data/edit/{{ plant.id }}" class="btn btn-primary">Edit</a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <a href="/data/delete/{{ plant.id }}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+
+</body>
+</html>

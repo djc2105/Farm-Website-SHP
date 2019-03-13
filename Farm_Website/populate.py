@@ -6,14 +6,8 @@ django.setup()
 from website.models import Lot,Row
 
 def populate():
-     #   lots = [
-     #       {"lot_id ": "a", "row_count":13},
-     #       {"lot_id ": "b", "row_count":10},
-     #       {"lot_id ": "c", "row_count":45},
-     #       {"lot_id ": "d", "row_count":13}
-     #   ]
 
-    lots = {"a": {"num_rows": 13}, "b": {"num_rows": 10}, "c": {"num_rows": 45}, "d": {"num_rows": 13}}
+    lots = {"a": {"num_rows": 13}, "b": {"num_rows": 10}, "c": {"num_rows": 45}, "d": {"num_rows": 17}}
 
     for lot_id, row_num in lots.items():
         lot = add_lot(lot_id)
