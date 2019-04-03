@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from website.forms import PlantForm
 from website.models import Plant,Row,Lot
+import os.path
 
 
 # Create your views here.
@@ -22,7 +23,7 @@ def sciencehome(request):
 
 
 def rowselect(request, id):
-    context_dict = {"id":id}
+    context_dict = {"id": id, "lot": "images/LOTA.png"}
     if (id == 'a'):
         return render(request, "rowselectA.html", context=context_dict)
     if (id == 'b'):
@@ -104,7 +105,7 @@ def isdatavalid(lot, row):
         return False
     if lot == "b" and int(row) > 10:
         return False
-    if lot == "c" and int(row) > 45:
+    if lot == "c" and int(row) > 51:
         return False
     if lot == "d" and int(row) > 17:
         return False
@@ -158,7 +159,27 @@ def updateplant(request, id):
 
 def deleteplant(request, id):
     context_dict = {}
-    Plant.objects.filter(id=id).delete()
+    plant = list(Plant.objects.filter(id=id))[0]
+    date = str(plant.dateplanted)
+    monthStr = date[-2:]
+    month = int(monthStr)
+    year = date[:4]
+
+    dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    dir = os.path.join(dir, "FarmDataArchive")
+
+    #File is called: "month1-month31-year"
+    #Feb 1 thorugh May 31
+    if(month >= 2 and month < 6):
+        f = open(dir + "/Feb1-May31-"+year, 'a')
+    #Jun 1 through Sept 31
+    if (month >= 6 and month < 10):
+        f = open(dir + "/Jun1-Sept31-"+year, 'a')
+    #Oct 1 through Jan 31
+    if (month >= 10 or month < 2):
+        f = open(dir + "/Oct1-Jan31-"+year, 'a')
+    f.write("Name:" + plant.plantname + " Date:" + str(plant.dateplanted) + " Row:" + plant.row.__str__() + " Quantity:" + str(plant.quantity) + " Notes:" + plant.notes + "\n")
+    plant.delete()
     return render(request, "success.html", context=context_dict)
 
 
@@ -180,3 +201,13 @@ def deleterowdata(request, lot_id, row_id):
         p.delete()
 
     return render(request, "success.html", context=context_dict)
+
+
+def about(request):
+    return HttpResponse("This website was made by Daniel Carlson, Class of 2019")
+
+
+def qrredirect(request, lot_id, row_id):
+    form = PlantForm()
+    context_dict = {"id": lot_id, "row": row_id, "form":form, }
+    return render(request, "dataform2.html", context=context_dict)

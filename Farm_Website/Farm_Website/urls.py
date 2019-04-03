@@ -34,4 +34,6 @@ urlpatterns = [
     url(r'^data/delete/(?P<id>.{0,100})', views.deleteplant, name="deleteplant"),
     url(r'^data/view/viewall', views.viewall, name="viewall"),
     url(r'^data/deleterowdata/(?P<lot_id>[ab-d])/(?P<row_id>[0-9][0-9])', views.deleterowdata, name="deleterowdata"),
+    url(r'^about', views.about, name="about"),
+    url(r'^data/qr/(?P<lot_id>[ab-d])/(?P<row_id>[0-9][0-9])/', views.qrredirect, name="qrredirect"),
 ]

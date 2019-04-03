@@ -2,12 +2,15 @@
 <html lang="en">
 {% load staticfiles %}
 
+
+<!-- Bootstrap Reference Files -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device.width, initial-scale=1">
     <title>Homepage</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/CSS/custom.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,17 +22,262 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
-
-
-
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <a class="navbar-brand" href="/homepage/">
+          <img src="{% static "images/siteLogoWhite.png" %}" alt="Logo" style="width:250px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/homepage/">Homepage <span class="sr-only">(current)</span></a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/data/homepage">Data <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/science/homepage">Science <span class="sr-only">(current)</span></a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <br>
+
+     <!-- Titles -->
     <div class="container">
-        <h1 class="text-center">What would you like to do</h1>
-        <h4 class="text-center">Please select a option below</h4>
-        <a href="/data/lotselect" class="btn btn-primary btn-block">Input New Data</a>
-        <a href="/data/view/viewrow" class="btn btn-primary btn-block">View Current Data</a>
+
+        <!-- Title Labels -->
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Please select an option below</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h4 class="text-center"></h4>
+            </div>
+        </div>
+        <br>
     </div>
+
+    <!-- Buttons -->
+    <div class="container">
+        <!-- Option Collapseables -->
+        <div class="row">
+            <!-- This is the collapsable menu for the input new data -->
+            <div class="col">
+                <button class="btn btn-outline-secondary btn-block" data-toggle="collapse" data-target="#input,#lotimg">Input New Data</button>
+                <div id="input" class="collapse">
+                    <hr />
+                    <!-- Title -->
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="text-center">Select a Lot</h3>
+                        </div>
+                    </div>
+                    <!-- Buttons -->
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-outline-secondary btn-block" data-toggle="collapse" data-target="#a,#lotimg">Lot A</button>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-outline-secondary btn-block" data-toggle="collapse" data-target="#b,#lotimg">Lot B</button>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-outline-secondary btn-block" data-toggle="collapse" data-target="#c,#lotimg">Lot C</button>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-outline-secondary btn-block" data-toggle="collapse" data-target="#d,#lotimg">Lot D</button>
+                        </div>
+                    </div>
+                    <hr />
+                    <!-- Lot a collapsable -->
+                    <div id="a" class="collapse">
+                        <div class="row">
+                            <div class="col">
+                                <form method="post" action="/data/getrow/a/">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="col">
+                                            <input type="text" class="form-control form-control-lg text-center" placeholder="Enter a row number" name="row">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 mx-auto">
+                                            <button type="submit" class="btn btn-outline-secondary btn-block ">Submit</button>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="{% static 'images/LOTA.png' %}" class='rounded mx-auto d-block' height=500 alt="Farm map"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lot a collapsable -->
+                    <div id="b" class="collapse">
+                        <div class="row">
+                            <div class="col">
+                                <form method="post" action="/data/getrow/b/">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="col">
+                                            <input type="text" class="form-control form-control-lg text-center" placeholder="Enter a row number" name="row">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 mx-auto">
+                                            <button type="submit" class="btn btn-outline-secondary btn-block ">Submit</button>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="{% static 'images/LOTB.png' %}" class='rounded mx-auto d-block' height=500 alt="Farm map"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lot a collapsable -->
+                    <div id="c" class="collapse">
+                        <div class="row">
+                            <div class="col">
+                                <form method="post" action="/data/getrow/c/">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="col">
+                                            <input type="text" class="form-control form-control-lg text-center" placeholder="Enter a row number" name="row">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 mx-auto">
+                                            <button type="submit" class="btn btn-outline-secondary btn-block ">Submit</button>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="{% static 'images/LOTC.png' %}" class='rounded mx-auto d-block' height=500 alt="Farm map"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lot a collapsable -->
+                    <div id="d" class="collapse">
+                        <div class="row">
+                            <div class="col">
+                                <form method="post" action="/data/getrow/d/">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="col">
+                                            <input type="text" class="form-control form-control-lg text-center" placeholder="Enter a row number" name="row">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 mx-auto">
+                                            <button type="submit" class="btn btn-outline-secondary btn-block ">Submit</button>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="{% static 'images/LOTD.png' %}" class='rounded mx-auto d-block' height=500 alt="Farm map"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Image -->
+                    <div id="lotimg" class="collaspe">
+                        <img src='{% static "images/LotLabeled.png" %}' class='rounded mx-auto d-block' height=500 alt="Farm map"/>
+                    </div>
+
+                </div>
+            </div>
+            <!-- This is the collapsable menu for the view data -->
+            <div class="col">
+                <button class="btn btn-outline-secondary btn-block" data-toggle="collapse" data-target="#view">View Current Data</button>
+                <div id="view" class="collapse">
+                    <hr />
+                    <!-- Form -->
+                    <form class="form-horizontal" method="post" action="/data/view/rowdata">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="control-label col-7" for="lot">Enter a Lot Number:</label>
+                            <div class="col">
+                                <input type="text" id="lot" class="form-control text-center" placeholder="A, B, C, D" name="lot_id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-7" for="row">Enter a Row Number:</label>
+                            <div class="col">
+                                <input type="text" id="row" class="form-control text-center" placeholder="Row Number" name="row_id">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-outline-secondary">Submit</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-secondary float-right" data-toggle="modal" data-target="#FarmMap">
+                                    Open Farm Map
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr/>
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="text-center">OR</h4>
+                            </div>
+                        </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-5 mx-auto">
+                            <a href="/data/view/viewall" class="btn btn-outline-secondary btn-block">View all Plants</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="FarmMap">
+        <div class="modal-dialog modal-dialog-centered" style="width:90%">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <img src="{% static 'images/Numbered&Labeled.png' %}" class='rounded mx-auto d-block' height=600 alt="Farm map" class="img-responsive"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 </body>
+
 </html>

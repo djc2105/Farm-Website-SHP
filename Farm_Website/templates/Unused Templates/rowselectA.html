@@ -1,16 +1,12 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-{% load staticfiles %}
-
-
-<!-- Bootstrap Reference Files -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device.width, initial-scale=1">
-    <title>Homepage</title>
+    <title>Bed Select</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../static/CSS/custom.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -22,12 +18,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
+
+
 <body>
+
     <!-- Navbar --->
-    <nav class="navbar">
-      <a class="navbar-brand" href="/homepage/">
-          <img src="{% static "images/siteLogoWhite.png" %}" alt="Logo" style="width:250px;">
-      </a>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/homepage">SHP Farm</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -53,46 +50,43 @@
 
     <br>
 
-    <!-- Title --->
-    <div class="container">
-        <div class="row-center">
-            <div class="col">
-                <h1 class="text-center display-4">Welcome to the SHP Farm Website</h1>
-            </div>
-        </div>
-    </div>
-
-    <br>
-
-    <!-- Both Cards --->
     <div class="container">
         <div class="row">
             <div class="col">
-                <a href="{% url 'datahomepage' %}" class="text-decoration-none text-reset">
-                    <div class="card float-right" style="width: 450px;margin:0 auto;">
-                        <img class="card-img-top" src="{% static "images/Data-Picture.jpg" %}" alt="Card image" style="width:100%">
-                        <div class="card-body">
-                          <h4 class="card-title">Data</h4>
-                          <p class="card-text">This is where you can input new data and view current and archived data.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-1"></div>
-            <div class="col">
-                <a href="{% url 'sciencehome' %}" class="text-decoration-none text-reset">
-                    <div class="card float-left" style="width: 450px;margin:0 auto;">
-                        <img class="card-img-top" src="{% static "images/Plant-Science.jpg" %}" alt="Card image" style="width:100%">
-                        <div class="card-body">
-                          <h4 class="card-title">Science</h4>
-                          <p class="card-text">This is where you can view real time data from sensors placed inside of various plant beds around campus</p>
-                        </div>
-                    </div>
-                </a>
+                <img src='{% static 'images/LOTA.png' %}' class='rounded float-right' height=500 alt="Farm map"/>
             </div>
         </div>
     </div>
 
-</body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h3> You have selected lot {{id}}</h3>
+            </div>
 
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3> You have selected lot {{id}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3>Now select a Row (use image for reference)</h3>
+        </div>
+        <div class="row"></div>
+    </div>
+    <form method="post" action="/data/getrow/a/">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="col-sm-6">
+                <input type="text" class="form-control form-control-lg" placeholder="Enter a row number" name="row">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</body>
 </html>

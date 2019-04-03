@@ -1,12 +1,14 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+{% load staticfiles %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device.width, initial-scale=1">
     <title>Bed Select</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/CSS/custom.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -18,22 +20,58 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
+<!-- CSS Styling because for some reason it wont load from the custom.css file-->
+<style>
+    .navbar-toggler .navbar-toggler-icon {
+    background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+}
+    .navbar {
+        background-color: #910626;
+    }
+    .navbar-toggler {
+        border-color: #ffffff;
+    }
+    .nav-link{
+        color: #ffffff;
+    }
+    .nav-link:hover{
+        color: #aaaaaa;
+    }
+    .plantlink {
+        color: #e90003;
+    }
+    .plantlink:hover{
+        color: #910626;
+
+    }
+</style>
+
+
+
 <body>
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-      <a class="navbar-brand" href="/homepage/">SHP Farm</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+    <!-- Navbar --->
+    <nav class="navbar ">
+      <a class="navbar-brand" href="/homepage/">
+          <img src="{% static "images/siteLogoWhite.png" %}" alt="Logo" style="width:250px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
+
+      <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/homepage/">Homepage</a>
+            <a class="nav-link" href="/homepage/">Homepage <span class="sr-only">(current)</span></a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/data/homepage">Data <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/data/homepage">Data</a>
+            <a class="nav-link" href="/science/homepage">Science <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/science/homepage">Science</a>
+           <li class="nav-item">
+            <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
+          </li>
           </li>
         </ul>
       </div>
@@ -41,12 +79,18 @@
 
     <br>
 
+    <!-- Title -->
     <div class="container">
-        <h1 class="text-center">You have selected Lot {{lot}}: Row {{rownum}}</h1>
-    </div>
-
-    <div class="container">
-        <p class="text-center">Click on a plant name to edit its details</p>
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Lot {{lot}}: Row {{rownum}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="text-center">Click on a plant name to edit its details</p>
+            </div>
+        </div>
     </div>
 
     <br>
@@ -63,7 +107,7 @@
         <tbody>
             {% for plant in plants %}
                 <tr>
-                    <td><a href="getplant/{{ plant.id }}">{{ plant.plantname }}</a></td>
+                    <td><a class="plantlink" href="getplant/{{ plant.id }}">{{ plant.plantname }}</a></td>
                     <td>{{plant.quantity}}</td>
                     <td>{{plant.dateplanted}}</td>
                 </tr>
@@ -100,21 +144,20 @@
                     Are you sure you want to delete all data
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col text-center">
                     <a href="/data/deleterowdata/{{lot}}/{{rownumwith0}}" class="btn btn-md btn-danger">Yes</a>
                 </div>
+                <div class="col text-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
             </div>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
 
       </div>
     </div>
   </div>
-
 </body>
+
 </html>
