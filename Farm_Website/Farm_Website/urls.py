@@ -36,4 +36,7 @@ urlpatterns = [
     url(r'^data/deleterowdata/(?P<lot_id>[ab-d])/(?P<row_id>[0-9][0-9])', views.deleterowdata, name="deleterowdata"),
     url(r'^about', views.about, name="about"),
     url(r'^data/qr/(?P<lot_id>[ab-d])/(?P<row_id>[0-9][0-9])/', views.qrredirect, name="qrredirect"),
+    url(r'^archive', views.archive, name='archive'),
+    url(r'^science/post', views.sciencepost, name='sciencepost'),
+    url(r'^', views.homepage, name='homepage')
 ]

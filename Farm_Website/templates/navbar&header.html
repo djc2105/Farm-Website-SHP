@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar</title>
+</head>
+<body>
+    <nav class="navbar">
+      <a class="navbar-brand" href="/homepage/">
+          <img src="{% static "images/siteLogoWhite.png" %}" alt="Logo" style="width:250px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/homepage/">Homepage <span class="sr-only">(current)</span></a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/data/homepage">Data <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/science/homepage">Science <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/archive/">Archive <span class="sr-only">(current)</span></a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </nav>
+</body>
+</html>

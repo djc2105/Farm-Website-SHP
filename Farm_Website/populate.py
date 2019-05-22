@@ -7,7 +7,8 @@ from website.models import Lot,Row
 
 def populate():
 
-    lots = {"a": {"num_rows": 13}, "b": {"num_rows": 10}, "c": {"num_rows": 51}, "d": {"num_rows": 17}}
+    lots = {"a": {"num_rows": 13}, "b": {"num_rows": 10}, "c": {"num_rows": 51}, "d": {"num_rows": 19}}
+
 
     for lot_id, row_num in lots.items():
         lot = add_lot(lot_id)
@@ -15,6 +16,8 @@ def populate():
         print(row_num["num_rows"])
         for currentRow in range(row_num["num_rows"]):
             add_row(lot, currentRow+1)
+
+    add_lot("e")
 
 def add_lot(id):
     l = Lot.objects.get_or_create(lotid=id)[0]

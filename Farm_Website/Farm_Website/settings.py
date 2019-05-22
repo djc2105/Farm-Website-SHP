@@ -27,7 +27,7 @@ SECRET_KEY = 'n*se88-ip$8x^dm06wk6f1id$ktdiq7##y&%vs@buurea9=imf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["Farm-Website-EB-Env.zktqppmzw7.us-west-1.elasticbeanstalk.com", "www.shpfarm.org", "127.0.0.1"]
 
 
 # Application definition

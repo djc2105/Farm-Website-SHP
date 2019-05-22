@@ -35,6 +35,7 @@ class Plant(models.Model):
     slug = models.SlugField()
     notes = models.TextField()
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    archived = models.BooleanField(default=False)
 
     def save(self,*args,**kwargs):
         self.slug = slugify(self.plantname);

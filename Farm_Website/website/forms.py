@@ -10,4 +10,4 @@ class PlantForm(forms.ModelForm):
 
     class Meta:
         model = Plant
-        exclude = ('row', 'slug', 'id',)
+        exclude = ('row', 'slug', 'id', 'archived')

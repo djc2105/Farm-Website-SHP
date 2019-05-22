@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1">
+    <title>Archive Viewer</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/CSS/custom.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    {% include "navbar&header.html" %}
+
+    <br>
+
+    <!--Form-->
+    <div class="container">
+        <form method="post" action="/archive">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-2">
+                    <b><label for="dateplantedstart">Planted between</label></b>
+                    <input type="date" class="form-control form-control-md" name="dateplantedstart">
+                </div>
+                <div class="col-2">
+                    <b><label for="dateplantedend">and</label></b>
+                    <input type="date" class="form-control form-control-md" name="dateplantedend">
+                </div>
+                <div class="col-2">
+                    <b><label for="name">Name</label></b>
+                    <input type="text" class="form-control form-control-md" placeholder="Name" name="name">
+                </div>
+                <div class="col-2">
+                    <b><label for="row">Location</label></b>
+                    <input type="text" class="form-control form-control-md" placeholder="Row#_Lot" name="row">
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <br>
+
+    <!--Table-->
+    <div class="container">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+              <th>Plant Name</th>
+              <th>Quantity</th>
+              <th>Date Planted</th>
+              <th>Old Location</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for plant in plants %}
+                <tr>
+                    <td><a class="plantlink" href="/data/view/getplant/{{ plant.id }}">{{ plant.plantname }}</a></td>
+                    <td>{{plant.quantity}}</td>
+                    <td>{{plant.dateplanted}}</td>
+                    <td>{{plant.row}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+
+</body>
+</html>

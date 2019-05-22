@@ -1,12 +1,16 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+{% load staticfiles %}
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device.width, initial-scale=1">
-    <title>Bed Select</title>
+    <title>BedSelect</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/CSS/custom.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -18,43 +22,56 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
+<style>
+
+</style>
 
 
 <body>
-    <div class="row">
-        <div class="col">
-            <h3>This is all the data for this plant</h3>
+    {% include "navbar&header.html" %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>This is all the data for this plant</h3>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h5>Plant Name: {{ plant.plantname }}</h5>
+        <div class="row">
+            <div class="col">
+                <h5>Plant Name: {{ plant.plantname }}</h5>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h5>Quantity: {{ plant.quantity }}</h5>
+        <div class="row">
+            <div class="col">
+                <h5>Quantity: {{ plant.quantity }}</h5>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h5>Date Planted: {{ plant.dateplanted }}</h5>
+        <div class="row">
+            <div class="col">
+                <h5>Date Planted: {{ plant.dateplanted }}</h5>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <h5>Notes: {{ plant.notes }}</h5>
+        <div class="row">
+            <div class="col">
+                <h5>Notes: {{ plant.notes }}</h5>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <a href="/data/edit/{{ plant.id }}" class="btn btn-primary">Edit</a>
+        <div class="row">
+            <div class="col">
+                <h5>Archived: {{ plant.archived }}</h5>
+            </div>
         </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col">
-            <a href="/data/delete/{{ plant.id }}" class="btn btn-danger">Delete</a>
+        <div class="row">
+            <div class="col">
+                <a href="/data/edit/{{ plant.id }}" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <a href="/data/delete/{{ plant.id }}" class="btn btn-danger">Delete</a>
+            </div>
         </div>
     </div>
 
